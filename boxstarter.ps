@@ -1,0 +1,74 @@
+#The command to run, built from the raw link of this gist
+START http://boxstarter.org/package/nr/url?https://gist.githubusercontent.com/andy-mehalick/2a0d00464a840fd8913e/raw/49d2c876f2c3e5f4dfb514499578e2ea8f962f65/gistfile1.txt
+
+# Boxstarter options
+$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.NoPassword=$false # Is this a machine with no login password?
+$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
+
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
+Update-ExecutionPolicy Unrestricted
+
+if (Test-PendingReboot) { Invoke-Reboot }
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
+
+Get-AppxPackage Microsoft.3DBuilder | Remove-AppxPackage
+Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage
+Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage
+Get-AppxPackage Microsoft.windowscommunicationsapps | Remove-AppxPackage
+Get-AppxPackage Microsoft.GetStarted | Remove-AppxPackage
+Get-AppxPackage Microsoft.Messaging | Remove-AppxPackage
+Get-AppxPackage Microsoft.Microsoft3DViewer | Remove-AppxPackage
+Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
+Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxPackage
+Get-AppxPackage Microsoft.OneConnect | Remove-AppxPackage
+Get-AppxPackage Microsoft.People | Remove-AppxPackage
+Get-AppxPackage Microsoft.WindowsFeedbackHub | Remove-AppxPackage
+Get-AppxPackage Microsoft.Xbox* | Remove-AppxPackage
+Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage
+Get-AppxPackage Microsoft.ZuneVideo | Remove-AppxPackage
+
+#cinst 1password
+cinst 7zip
+cinst adobe-creative-cloud
+cinst balsamiqmockups.install
+cinst beyondcompare
+cinst conemu
+cinst visualstudiocode
+cinst dropbox
+cinst filezilla
+cinst git
+cinst googlechrome
+cinst nodejs
+cinst notepad2
+cinst notepadplusplus
+cinst slack
+cinst snagit
+cinst gitkraken
+cinst spotify
+cinst linqpad
+cinst autohotkey
+cinst freeter
+cinst microsoftazurestorageexplorer
+cinst python
+cinst skyfonts
+cinst discord
+cinst whatsapp
+
+# manual installs
+# Firefox Developer Edition
+# MaxTo
+# Microsoft .NET Core SDK
+# Microsoft Office
+# Microsoft SQL Management Studio
+# Microsoft Visio
+# Microsoft Visual Studio
+# Microsoft Visual Studio - CodeMaid
+# Microsoft Visual Studio - JetBrains ReSharper
+# Microsoft Visual Studio - Tabs Studio
+# Microsoft Visual Studio - TestDriven.Net
+# Microsoft Visual Studio - Web Essentials
+# Trello
